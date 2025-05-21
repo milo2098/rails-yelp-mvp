@@ -2,3 +2,14 @@
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number %></p>
 <p><%= @restaurant.category %></p>
+<% if @restaurant.reviews != nil %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= "#{review.rating} #{review.content}" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Leave Review", new_restaurant_review_path(params[:id]) %>
+
+<%= link_to "Back to Restaurants", restaurants_path %>
